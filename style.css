@@ -1,6 +1,6 @@
 body {
-	background: #EFEFBB;
-	background: linear-gradient(to right, rgb(197, 230, 236), rgb(239, 187, 230));
+	background: #ffffff;
+	background: linear-gradient(to right, rgb(87, 162, 177), rgb(170, 81, 155));
 	color: white;
 	margin: 0;
 	font-family: rubik;
@@ -108,7 +108,7 @@ h1 {
 }
 
 .card:hover {
-	animation: bounce 0.5s linear;
+	animation: bounce 0.5s linear
 }
 
 .card-title {
