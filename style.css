@@ -32,18 +32,20 @@ h1 {
 	position: relative;
 }
 
+
 .card::after {
 	content: "";
   display: block;
   width: 50%;
   height: 45%;
   border-radius: 100%;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
   opacity: .7;
   position: absolute;
   top: 15%;
   left: 25%;
 }
+
 
 .steel {
 	background-color: #f4f4f4;
