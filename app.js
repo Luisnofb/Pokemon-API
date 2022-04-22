@@ -3,7 +3,7 @@ const fetchPokemon = () => {
 
     const pokemonPromises = [];
 
-    for (let i = 1; i <= 150; i++) {
+    for (let i = 1; i <= 493; i++) {
         pokemonPromises.push(fetch(getPokemonUrl(i)).then(response => response.json()));
     }
 
@@ -15,7 +15,7 @@ const fetchPokemon = () => {
                 const types = pokemon.types.map(typeInfo => typeInfo.type.name);
                 accumulator +=
                     `<li class="card ${types[0]}">
-                     <img class="card-image" alt="${pokemon.name}" src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemon.id}.png" />
+                     <img class="card-image" alt="${pokemon.name}" src="${pokemon.sprites.front_default}" />
                         <h2 class="card-title">${pokemon.id} - ${pokemon.name}</h2>
                         <p class="card-subtitle">${types.join(' | ')}</p>
                     </li>

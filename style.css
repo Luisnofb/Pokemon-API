@@ -1,6 +1,6 @@
 body {
 	background: #ffffff;
-	background: linear-gradient(to right, rgb(87, 162, 177), rgb(170, 81, 155));
+	background: linear-gradient(to right, rgb(133, 215, 236), rgb(231, 223, 108));
 	color: white;
 	margin: 0;
 	font-family: rubik;
@@ -83,12 +83,20 @@ h1 {
 	background-color: #98d7a5;
 }
 
+.ghost  {
+	background-color: #afc1da;
+}
+
 .bug {
 	background-color: #f8d5a3;
 }
 
 .dragon {
-	background-color: #97b3e6;
+	background-color: #b8c8e6;
+}
+
+.dark {
+	background-color: #b0b3dd;
 }
 
 .psychic {
