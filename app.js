@@ -1,32 +1,34 @@
-const fetchPokemon = () => {
-    const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-    const pokemonPromises = [];
+let side = true;
 
-    for (let i = 1; i <= 493; i++) {
-        pokemonPromises.push(fetch(getPokemonUrl(i)).then(response => response.json()));
-    }
 
-    Promise.all(pokemonPromises)
-        .then(pokemons => {
-            //console.log(pokemons)
+const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`;
 
-            const lisPokemons = pokemons.reduce((accumulator, pokemon) => {
-                const types = pokemon.types.map(typeInfo => typeInfo.type.name);
-                accumulator +=
-                    `<li class="card ${types[0]}">
-                     <img class="card-image" alt="${pokemon.name}" src="${pokemon.sprites.front_default}" />
-                        <h2 class="card-title">${pokemon.id} - ${pokemon.name}</h2>
-                        <p class="card-subtitle">${types.join(' | ')}</p>
-                    </li>
-            `
-                return accumulator;
-            }, '')
+const generatePokemomPromises = () => Array(493).fill().map((_, index) =>
+    fetch(getPokemonUrl(index + 1)).then(response => response.json())
+);
 
-            const ul = document.querySelector('[data-js="pokedex"]')
-
-            ul.innerHTML = lisPokemons;
-        });
+const insertPokeonsInto = pokemons => {
+    const ul = document.querySelector('[data-js="pokedex"]')
+    ul.innerHTML = pokemons;
 }
 
-fetchPokemon()
+const generateHTML = pokemons => pokemons.reduce((accumulator, { name, id, types, sprites}) => {
+    const elementypes = types.map(typeInfo => typeInfo.type.name);
+
+    accumulator +=
+        `<li class="card ${elementypes[0]}">
+            <img class="card-image" alt="${name}" src="${sprites.front_default}"/>
+            <h2 class="card-title">${id} - ${name}</h2>
+            <p class="card-subtitle">${elementypes.join(' | ')}</p>
+        </li>`
+    return accumulator;
+}, '');
+
+
+const pokemonPromises = generatePokemomPromises();
+
+
+Promise.all(pokemonPromises)
+    .then(generateHTML)
+    .then(insertPokeonsInto)
